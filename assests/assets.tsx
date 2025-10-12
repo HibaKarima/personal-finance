@@ -1,0 +1,96 @@
+
+import { StaticImageData } from "next/image";
+import navIcon1 from "../public/images/icon-nav-overview.svg"
+import navIcon2 from "../public/images/icon-nav-transactions.svg"
+import navIcon3 from "../public/images/icon-nav-budgets.svg"
+import navIcon4 from "../public/images/icon-nav-pots.svg"
+import navIcon5 from "../public/images/icon-nav-recurring-bills.svg"
+
+
+export interface sidebar {
+  icon: StaticImageData | string;
+  text: string;
+  link:string;
+}
+export const sidebarData:sidebar[] = [
+   {icon: navIcon1 , text : "Overview",link:'/dashboard'},
+   {icon: navIcon2 , text : "Transactions",link:'/dashboard/transactionsPage'},
+   {icon: navIcon3 , text : "Budgets",link:'overview'},
+   {icon: navIcon4 , text : "Pots",link:'overview'},
+   {icon: navIcon5 , text : "Recurring Bills",link:'overview'},
+   
+];
+export interface cardItem {
+  text: string;
+  num:string;
+}
+export const cardData:cardItem[] = [
+   {text: "Current Balance" , num :"4,836,00" },
+   {text: "Income" , num : "3,814,25"},
+   {text: "Expenses" , num : "1,700,50"},
+   
+];
+
+export interface potItem {
+  text: string;
+  num:string;
+  color:string;
+}
+export const potData:potItem[] = [
+   {text: "Savings" , num :"159",color:'bg-emerald-600' },
+   {text: "Consert Ticket" , num : "110",color:'bg-slate-600'},
+   {text: "Gift" , num : "40",color:'bg-teal-500'},
+   {text: "New Laptop" , num : "10",color:'bg-amber-300'},
+];
+
+export interface budgetItem {
+  text: string;
+  num:number;
+  color:string;
+  [key: string]: string | number;
+}
+export const budgetData:budgetItem[] = [
+   {text: "Entertainment" , num :159,color:'#10B981' },
+   {text: "Bills" , num : 110,color:'#64748B'},
+   {text: "Dining Out" , num : 40,color:'#14B8A6'},
+   {text: "Personal Care" , num : 10,color:'#FACC15'},
+];
+
+export interface billstItem {
+  text: string;
+  value:number;
+  color:string;
+}
+export const billsData:billstItem [] = [
+   {text: "Paid Bills" , value :190,color:'#10B981' },
+   {text: "Total Upcoming" , value : 194,color:'#FACC15'},
+   {text: "Due Soon" , value : 75,color:'#14B8A6'},
+   {text: "Personal Care" , value : 10,color:'#FACC15'},
+];
+
+export interface transactionItem {
+  img:  StaticImageData | string;
+  name:string;
+  amount:number;
+  date:string;
+  state:string;
+  category: string
+}
+export const transactionData: transactionItem[] = [
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:6,date:'10 Aug 2024',state:"earning",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024' ,state:"spending",category: "General"},
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024',state:"earning",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:8706,date:'10 Aug 2024',state:"spending",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024',state:"spending" ,category: "General"},
+      {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:6,date:'10 Aug 2024',state:"earning",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024' ,state:"spending",category: "General"},
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024',state:"earning",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:8706,date:'10 Aug 2024',state:"spending",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024',state:"spending" ,category: "General"},
+      {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:6,date:'10 Aug 2024',state:"earning",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024' ,state:"spending",category: "General"},
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024',state:"earning",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:8706,date:'10 Aug 2024',state:"spending",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2024',state:"spending" ,category: "General"},
+
+];
