@@ -21,13 +21,9 @@ function TransactionsPage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortOption, setSortOption] = useState("Latest");
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(transactionData.length / itemsPerPage);
-  const currentData = useMemo(() => {
-    const start = (currentPage - 1) * itemsPerPage;
-    return transactionData.slice(start, start + itemsPerPage);
-  }, [currentPage, transactionData]);
   const handleNext = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
@@ -37,6 +33,54 @@ function TransactionsPage() {
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
   };
+ 
+  const filteredData = useMemo(() => {
+  return transactionData
+    .filter((item) =>
+      search ? item.name.toLowerCase().includes(search.toLowerCase()) : true
+    )
+    .filter((item) => (category !== "all" ? item.category === category : true));
+}, [search, category]);
+
+
+const sortedData = useMemo(() => {
+  const sorted = [...filteredData];
+
+  switch (sortOption) {
+    case "Latest":
+      sorted.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+      break;
+    case "Oldest":
+      sorted.sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
+      break;
+    case "A to Z":
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "Z to A":
+      sorted.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "Highest":
+      sorted.sort((a, b) => b.amount - a.amount);
+      break;
+    case "Lowest":
+      sorted.sort((a, b) => a.amount - b.amount);
+      break;
+  }
+
+  return sorted;
+}, [filteredData, sortOption]);
+
+
+const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+const currentData = useMemo(() => {
+  const start = (currentPage - 1) * itemsPerPage;
+  return sortedData.slice(start, start + itemsPerPage);
+}, [sortedData, currentPage]);
+
   return (
     <div className="lg:py-2 lg:px-10 w-full pb-30 h-screen px-5">
       <h1 className="text-2xl font-bold py-4">Transactions</h1>
@@ -82,12 +126,17 @@ function TransactionsPage() {
               </DropdownMenuTrigger>
 
               <DropdownMenuContent className="w-46 bg-gray-200 mr-6">
-                <DropdownMenuItem>Latest</DropdownMenuItem>
-                <DropdownMenuItem>Oldest</DropdownMenuItem>
-                <DropdownMenuItem>A to Z</DropdownMenuItem>
-                <DropdownMenuItem>Z to A</DropdownMenuItem>
-                <DropdownMenuItem>Highest</DropdownMenuItem>
-                <DropdownMenuItem>Lowest</DropdownMenuItem>
+                 {["Latest", "Oldest", "A to Z", "Z to A", "Highest", "Lowest"].map(
+      (option) => (
+        <DropdownMenuItem
+          key={option}
+          onClick={() => setSortOption(option)}
+          className={sortOption === option ? "font-semibold bg-gray-300" : ""}
+        >
+          {option}
+        </DropdownMenuItem>
+      )
+    )}
               </DropdownMenuContent>
             </DropdownMenu>
             <DropdownMenu>
@@ -114,12 +163,17 @@ function TransactionsPage() {
 
               <DropdownMenuContent className="w-56 bg-gray-200 mr-6">
                 <DropdownMenuItem
-                  onClick={() => setCategory("all")}
+                  onClick={() =>{
+                     setCategory("all");
+                    setSortOption("none");
+                    setSearch("")
+                    }}
                   className="font-bold"
+
                 >
                   All Transactions
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setCategory("general")}>
+                <DropdownMenuItem onClick={() => setCategory("General")}>
                   General
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setCategory("bills")}>
@@ -194,7 +248,19 @@ function TransactionsPage() {
             ))}
           </div>
         </div>
+        {filteredData.length === 0 && (
+         
+              <div
+               
+                className="text-center p-4 text-gray-500 italic w-full"
+              >
+                No transactions found
+                
+              </div>
+          
+          )}
         <div className="w-full mt-6">
+          {totalPages > 1 && (
           <Pagination>
             <PaginationContent className="w-full justify-between items-center px-4">
               <PaginationItem className="border-1 rounded-xl border-gray-500 text-gray-800">
@@ -222,6 +288,7 @@ function TransactionsPage() {
               </PaginationItem>
             </PaginationContent>
           </Pagination>
+          )}
         </div>
       </div>
     </div>
