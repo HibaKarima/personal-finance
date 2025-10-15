@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 function SideNavbars() {
   const pathname = usePathname();
   return (
-    <div className="lg:w-[20%] rounded-t-xl lg:rounded-t-none lg:rounded-r-xl w-full  lg:h-screen h-auto flex flex-row lg:flex-col bg-gray-950 shadow text-gray-100 lg:py-6 lg:pr-6 lg:pl-0 p-5  fixed lg:relative bottom-0 right-3 left-0 lg:right-auto z-50">
+    <div className="lg:w-[20%] rounded-t-xl lg:rounded-t-none lg:rounded-r-xl w-full  h-auto flex flex-row lg:flex-col bg-gray-950 shadow text-gray-100 lg:py-6 lg:pr-6 lg:pl-0 p-5  fixed lg:relative bottom-0 right-3 left-0 lg:right-auto z-50">
       <h2 className="text-2xl font-extrabold mb-10 ml-12 tracking-tight hidden lg:block">
         finance
       </h2>

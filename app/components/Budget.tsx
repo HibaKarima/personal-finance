@@ -1,30 +1,17 @@
 "use client";
 import { budgetData, budgetItem } from "@/assests/assets";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
+import Title from "./Title";
 
 function Budget() {
   const total = budgetData.reduce((sum, d) => sum + d.num, 0);
   const limit = 975;
   return (
     <div className="h-auto bg-white rounded-2xl p-4 shadow-sm w-full">
-      <div className="flex justify-between gap-4 items-center mb-4">
-        <h1 className="text-xl font-semibold text-gray-900">Budgets</h1>
-        <Link
-          href="/"
-          className="text-gray-500 text-sm flex items-center gap-3 hover:text-gray-700"
-        >
-          See Details{" "}
-          <Image
-            src="images/icon-caret-right.svg"
-            alt="carret"
-            width={5}
-            height={5}
-          ></Image>
-        </Link>
-      </div>
+
+                 <Title title="Budgets" link="/dashboard/budgets" text="See Details"/>
+      
       <div className="flex items-center justify-around  ">
         <div className="relative">
           <PieChart width={200} height={200}>

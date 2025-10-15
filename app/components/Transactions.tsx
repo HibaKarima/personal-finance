@@ -1,26 +1,13 @@
 import { transactionData, transactionItem } from "@/assests/assets";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import Title from "./Title";
 
 function Transactions() {
   return (
     <div className="bg-white rounded-2xl px-4 py-2 shadow-sm mt-2 max-h-[350px] ">
-      <div className="flex justify-between items-center mb-2">
-        <h1 className="text-xl font-semibold text-gray-900">Transactions</h1>
-        <Link
-          href="/"
-          className="text-gray-500 text-sm flex items-center gap-3 hover:text-gray-700"
-        >
-          View All{" "}
-          <Image
-            src="images/icon-caret-right.svg"
-            alt="carret"
-            width={5}
-            height={5}
-          ></Image>
-        </Link>
-      </div>
+
+           <Title title="Transactions" link="/dashboard/transactionsPage" text="View All"/>
 
       <div className="flex flex-col gap-2 ">
         {transactionData

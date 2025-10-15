@@ -1,26 +1,12 @@
 import { potData, potItem } from "@/assests/assets";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import Title from "./Title";
 
 function Pots() {
   return (
     <div className="h-auto bg-white rounded-2xl p-4 shadow-sm">
-      <div className="flex justify-between gap-4 items-center mb-4">
-        <h1 className="text-xl font-semibold text-gray-900">Pots</h1>
-        <Link
-          href="/"
-          className="text-gray-500 text-sm flex items-center gap-3 hover:text-gray-700"
-        >
-          See Details{" "}
-          <Image
-            src="images/icon-caret-right.svg"
-            alt="carret"
-            width={5}
-            height={5}
-          ></Image>
-        </Link>
-      </div>
+     <Title title="Pots" link="/" text="See Details"/>
       <div className="flex items-center gap-2 md:justify-evenly">
         <div className="flex items-center lg:gap-4 gap-2 bg-gray-50 rounded-xl md:px-10 py-4 px-3">
           <Image

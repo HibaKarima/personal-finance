@@ -1,26 +1,13 @@
 import { billsData, billstItem } from "@/assests/assets";
-import Image from "next/image";
-import Link from "next/link";
+
 import React from "react";
+import Title from "./Title";
 
 function RecurringBills() {
   return (
     <div className="flex flex-col gap-2 p-5 rounded-2xl bg-white shadow-sm">
-      <div className="flex justify-between gap-4 items-center">
-        <h1 className="text-xl font-semibold text-gray-900">Recurring Bills</h1>
-        <Link
-          href="/"
-          className="text-gray-500 text-sm flex items-center gap-3 hover:text-gray-700"
-        >
-          See Details{" "}
-          <Image
-            src="images/icon-caret-right.svg"
-            alt="carret"
-            width={5}
-            height={5}
-          ></Image>
-        </Link>
-      </div>
+           <Title title="Recurring Bills" link="/" text="See Details"/>
+
       <div className="flex flex-col items-center gap-2 rounded-2xl">
         {billsData.slice(0, 3).map((item: billstItem, index: number) => (
           <div

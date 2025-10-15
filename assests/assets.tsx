@@ -15,7 +15,7 @@ export interface sidebar {
 export const sidebarData:sidebar[] = [
    {icon: navIcon1 , text : "Overview",link:'/dashboard'},
    {icon: navIcon2 , text : "Transactions",link:'/dashboard/transactionsPage'},
-   {icon: navIcon3 , text : "Budgets",link:'overview'},
+   {icon: navIcon3 , text : "Budgets",link:'/dashboard/budgets'},
    {icon: navIcon4 , text : "Pots",link:'overview'},
    {icon: navIcon5 , text : "Recurring Bills",link:'overview'},
    
@@ -48,12 +48,13 @@ export interface budgetItem {
   num:number;
   color:string;
   [key: string]: string | number;
+  fullamount:number;
 }
 export const budgetData:budgetItem[] = [
-   {text: "Entertainment" , num :159,color:'#10B981' },
-   {text: "Bills" , num : 110,color:'#64748B'},
-   {text: "Dining Out" , num : 40,color:'#14B8A6'},
-   {text: "Personal Care" , num : 10,color:'#FACC15'},
+   {text: "Entertainment" , num :59,color:'#10B981' ,fullamount:150},
+   {text: "Bills" , num : 110,color:'#64748B',fullamount:550},
+   {text: "Dining Out" , num : 40,color:'#14B8A6',fullamount:1150},
+   {text: "Personal Care" , num : 10,color:'#FACC15',fullamount:750},
 ];
 
 export interface billstItem {
@@ -77,20 +78,20 @@ export interface transactionItem {
   category: string
 }
 export const transactionData: transactionItem[] = [
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:6,date:'11 Aug 2024',state:"earning",category: "General" },
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'1 Sep 2024' ,state:"spending",category: "General"},
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2027',state:"earning",category: "General" },
+   {img: "/images/logo-small.svg" , name :"Karima",amount:6,date:'11 Aug 2024',state:"earning",category: "Entertainment" },
+   {img: "/images/logo-small.svg" , name :"Karima",amount:876,date:'1 Sep 2024' ,state:"spending",category: "Entertainment"},
+   {img: "/images/logo-small.svg" , name :"Karima",amount:876,date:'10 Aug 2027',state:"earning",category: "Entertainment" },
    {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:8706,date:'10 Aug 2024',state:"spending",category: "General" },
    {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2028',state:"spending" ,category: "General"},
-      {img: "/images/logo-small.svg" , name :"alaa",amount:6,date:'10 Aug 2024',state:"earning",category: "dining" },
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2025' ,state:"spending",category: "dining"},
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2023',state:"earning",category: "dining" },
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:8706,date:'10 Aug 2022',state:"spending",category: "General" },
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2021',state:"spending" ,category: "General"},
-      {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:6,date:'10 Aug 2004',state:"earning",category: "General" },
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2020' ,state:"spending",category: "General"},
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2011',state:"earning",category: "General" },
-   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:8706,date:'10 Aug 2012',state:"spending",category: "General" },
+      {img: "/images/logo-small.svg" , name :"alaa",amount:6,date:'10 Aug 2024',state:"earning",category: "Dining Out" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2025' ,state:"spending",category: "Dining Out"},
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2023',state:"earning",category: "Dining Out" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:8706,date:'10 Aug 2022',state:"spending",category: "Bills" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2021',state:"spending" ,category: "Bills"},
+      {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:6,date:'10 Aug 2004',state:"earning",category: "Bills" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2020' ,state:"spending",category: "Personal Care"},
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:876,date:'10 Aug 2011',state:"earning",category: "Personal Care" },
+   {img: "/images/logo-small.svg" , name :"Hiba Karima",amount:8706,date:'10 Aug 2012',state:"spending",category: "Personal Care" },
    {img: "/images/logo-small.svg" , name :"aiasaa",amount:876,date:'10 Aug 2024',state:"spending" ,category: "dining"},
 
 ];
