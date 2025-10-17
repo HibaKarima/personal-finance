@@ -3,11 +3,14 @@ import { sidebar, sidebarData } from "@/assests/assets";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-function SideNavbars() {
+interface SidebarProps {
+  isOpen: boolean;         
+  closeSidebar: () => void;
+}
+function SideNavbars({ isOpen, closeSidebar }: SidebarProps) {
   const pathname = usePathname();
   return (
-    <div className="lg:w-[20%] rounded-t-xl lg:rounded-t-none lg:rounded-r-xl w-full  h-auto flex flex-row lg:flex-col bg-gray-950 shadow text-gray-100 lg:py-6 lg:pr-6 lg:pl-0 p-5  fixed lg:relative bottom-0 right-3 left-0 lg:right-auto z-50">
+    <div className={`${isOpen ? "flex" : "hidden"} lg:w-[20%] rounded-t-xl lg:rounded-t-none lg:rounded-r-xl w-full  min-h-screen h-full  flex-row lg:flex-col bg-gray-950 shadow text-gray-100 lg:py-6 lg:pr-6 lg:pl-0 p-5  fixed bottom-0 right-3 left-0 lg:right-auto z-50`}>
       <h2 className="text-2xl font-extrabold mb-10 ml-12 tracking-tight hidden lg:block">
         finance
       </h2>
@@ -39,7 +42,7 @@ function SideNavbars() {
         })}
       </div>
       <div className=" hidden lg:block absolute bottom-15 text-center left-10 text-gray-400 group hover:text-gray-600 transition-colors duration-300">
-        <Link href="/" className="flex gap-3 items-center font-semibold">
+        <Link href="" className="flex gap-3 items-center font-semibold" onClick={closeSidebar}>
           <Image
             src="/images/icon-minimize-menu.svg"
             alt="minmize icon"

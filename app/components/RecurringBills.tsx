@@ -6,7 +6,7 @@ import Title from "./Title";
 function RecurringBills() {
   return (
     <div className="flex flex-col gap-2 p-5 rounded-2xl bg-white shadow-sm">
-           <Title title="Recurring Bills" link="/" text="See Details"/>
+           <Title title="Recurring Bills" link="/dashboard/recurringBills" text="See Details"/>
 
       <div className="flex flex-col items-center gap-2 rounded-2xl">
         {billsData.slice(0, 3).map((item: billstItem, index: number) => (

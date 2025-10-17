@@ -6,7 +6,7 @@ import Title from "./Title";
 function Pots() {
   return (
     <div className="h-auto bg-white rounded-2xl p-4 shadow-sm">
-     <Title title="Pots" link="/" text="See Details"/>
+     <Title title="Pots" link="/dashboard/pots" text="See Details"/>
       <div className="flex items-center gap-2 md:justify-evenly">
         <div className="flex items-center lg:gap-4 gap-2 bg-gray-50 rounded-xl md:px-10 py-4 px-3">
           <Image
