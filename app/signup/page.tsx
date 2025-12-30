@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import { Button } from "../components/ui/button"
 import {
   Card,
@@ -29,7 +30,7 @@ export default function Page() {
     src="/images/illustration-authentication.svg"
     alt="Background image"
     fill
-    className="object-cover rounded-2xl -z-0"
+    className="object-cover rounded-2xl z-0"
   />
 
   <h1 className="absolute top-8 left-8 text-2xl font-extrabold tracking-tight text-white">
@@ -96,8 +97,9 @@ export default function Page() {
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
+      
         <Button type="submit" className="w-full bg-gray-900 text-white mt-5 cursor-pointer">
-          {currState === 'Sign Up' ? 'Craete Account' : 'Login'}
+           <Link href="/dashboard"> {currState === 'Sign Up' ? 'Craete Account' : 'Login'}</Link>
         </Button>
       <div>
           {currState === 'Sign Up' ? (

@@ -5,11 +5,11 @@ import Title from "./Title";
 
 function Transactions() {
   return (
-    <div className="bg-white rounded-2xl px-4 py-2 shadow-sm mt-2 max-h-[350px] ">
+    <div className="bg-white rounded-2xl px-4 py-5 shadow-sm mt-2 h-auto ">
 
            <Title title="Transactions" link="/dashboard/transactionsPage" text="View All"/>
 
-      <div className="flex flex-col gap-2 ">
+      <div className="flex flex-col gap-5 ">
         {transactionData
           .slice(0, 5)
           .map((item: transactionItem, index: number) => (

@@ -8,36 +8,60 @@ function Budget() {
   const total = budgetData.reduce((sum, d) => sum + d.num, 0);
   const limit = 975;
   return (
-    <div className="h-auto bg-white rounded-2xl p-4 shadow-sm w-full">
+    <div className="h-auto bg-white rounded-2xl p-5 shadow-sm w-full">
 
                  <Title title="Budgets" link="/dashboard/budgets" text="See Details"/>
       
-      <div className="flex items-center justify-around  ">
+      <div className="flex items-center justify-around">
         <div className="relative">
-          <PieChart width={200} height={200}>
-            <Pie
-              data={budgetData}
-              dataKey="num"
-              innerRadius={60}
-              outerRadius={90}
-              startAngle={90}
-              endAngle={450}
-            >
-              {budgetData.map((item1: budgetItem, index: number) => (
-                <Cell key={`cell-${index}`} fill={item1.color} />
-              ))}
-            </Pie>
-          </PieChart>
+        <PieChart width={300} height={300}>
+  {/* Outer Ring */}
+  <Pie
+    data={budgetData}
+    dataKey="num"
+    cx="50%"
+    cy="50%"
+    innerRadius={85}
+    outerRadius={120}
+    startAngle={90}
+    endAngle={450}
+  >
+    {budgetData.map((item, index) => (
+      <Cell key={`outer-${index}`} fill={item.color} />
+    ))}
+  </Pie>
+
+  {/* Inner Ring */}
+  <Pie
+    data={budgetData}
+    dataKey="num"
+    cx="50%"
+    cy="50%"
+    innerRadius={70}
+    outerRadius={85}
+    startAngle={90}
+    endAngle={450}
+  >
+    {budgetData.map((item, index) => (
+      <Cell
+        key={`inner-${index}`}
+        fill={item.color}
+        fillOpacity={0.35}
+      />
+    ))}
+  </Pie>
+</PieChart>
+
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <h2 className="text-2xl font-bold text-gray-900">${total}</h2>
             <p className="text-gray-500 text-sm">of ${limit} limit</p>
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
           {budgetData.map((item: budgetItem, index: number) => {
             return (
-              <div key={index} className="flex items-center gap-3">
+              <div key={index} className="flex items-center gap-5">
                 <div
                   className={`w-1 h-10 rounded`}
                   style={{ backgroundColor: item.color }}

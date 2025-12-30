@@ -83,8 +83,8 @@ const currentData = useMemo(() => {
 
   return (
     <div className="lg:py-2 lg:px-10 w-full pb-30 h-screen px-5">
-      <h1 className="text-2xl font-bold py-4">Transactions</h1>
-      <div className="rounded-xl bg-white p-4">
+      <h1 className="text-2xl font-bold py-5">Transactions</h1>
+      <div className="rounded-xl bg-white p-5">
         <div className="flex justify-between items-center px-2">
           <div className="relative">
             <input
@@ -199,55 +199,63 @@ const currentData = useMemo(() => {
 
         <div className="w-full h-full text-sm mt-5 flex flex-col flex-1 justify-center items-center px-2">
           <div className="w-full">
-            <div className="text-gray-500 border-b text-left border-gray-500 flex items-center justify-between w-full  px-2">
-              <div className="pb-2">Recipient / Sender</div>
-              <div className="hidden gap-5 items-center text-center md:flex">
-                <p className="pb-2">Category</p>
-                <p className="pb-2">Transaction Date</p>
-              </div>
-              <div className="pb-2 text-right">Amount</div>
-            </div>
-          </div>
-          <div className="w-full flex flex-col gap-1">
-            {currentData.map((item: transactionItem, index: number) => (
-              <div
-                key={index}
-                className="border-b border-gray-500 hover:bg-gray-50 flex items-center justify-between w-full py-0.5 px-2"
-              >
-                <div className=" flex gap-5 items-center">
-                  <Image
-                    src={item.img}
-                    alt={item.name}
-                    width={23}
-                    height={23}
-                    className=" rounded-full object-cover"
-                  />
-                  <div className="flex flex-col gap-1">
-                    <span className="font-medium">{item.name}</span>
-                    <p className="text-gray-500 md:hidden text-sm">
-                      {item.category}
-                    </p>
-                  </div>
-                </div>
+           <div className="hidden md:grid grid-cols-[1fr_1fr_1fr] items-center w-full px-2 border-b border-gray-500 text-gray-500">
+  <div className="pb-2">Recipient / Sender</div>
+  <div className="grid grid-cols-[1fr_1fr] items-center ">
+  <div className="pb-2 text-center">Category</div>
+  <div className="pb-2 text-center">Transaction Date</div>
+  </div>
+  <div className="pb-2 text-right ">Amount</div>
+</div>
 
-                <div className="hidden gap-5 items-center md:flex">
-                  <p className="text-gray-500">{item.category}</p>
-                  <p className="text-gray-500">{item.date}</p>
-                </div>
-
-                <div
-                  className={`text-right font-semibold ${
-                    item.state === "earning"
-                      ? "text-green-600"
-                      : "text-black-500"
-                  }`}
-                >
-                  {item.state === "earning" ? "+" : "-"}$
-                  {Math.abs(item.amount).toFixed(2)}
-                </div>
-              </div>
-            ))}
           </div>
+         <div className="w-full flex flex-col gap-3">
+  {currentData.map((item: transactionItem, index: number) => (
+    <div
+      key={index}
+      className="grid grid-cols-[1fr_1fr_1fr] items-center w-full px-2 py-2 border-b border-gray-200 hover:bg-gray-50"
+    >
+      {/* Recipient */}
+      <div className="flex gap-4 items-center">
+        <Image
+          src={item.img}
+          alt={item.name}
+          width={35}
+          height={35}
+          className="rounded-full object-cover"
+        />
+        <div className="flex flex-col">
+          <span className="font-medium">{item.name}</span>
+          <span className="text-gray-500 text-sm md:hidden">
+            {item.category}
+          </span>
+        </div>
+      </div>
+
+      {/* Category */}
+      <div className="grid grid-cols-[1fr_1fr] items-center">
+      <div className="hidden md:block text-center text-gray-500">
+        {item.category}
+      </div>
+
+      {/* Date */}
+      <div className="hidden md:block text-center text-gray-500">
+        {item.date}
+      </div>
+</div>
+      {/* Amount */}
+      <div
+        className={`text-right font-semibold ${
+          item.state === "earning" ? "text-green-600" : "text-black"
+        }`}
+      >
+        {item.state === "earning" ? "+" : "-"}$
+        {Math.abs(item.amount).toFixed(2)}
+      </div>
+    </div>
+  ))}
+</div>
+
         </div>
         {filteredData.length === 0 && (
          
@@ -264,7 +272,7 @@ const currentData = useMemo(() => {
           {totalPages > 1 && (
           <Pagination>
             <PaginationContent className="w-full justify-between items-center px-4">
-              <PaginationItem className="border-1 rounded-xl border-gray-500 text-gray-800">
+              <PaginationItem className="border rounded-xl border-gray-500 text-gray-800">
                 <PaginationPrevious
                   href="#"
                   size="default"
@@ -284,7 +292,7 @@ const currentData = useMemo(() => {
                   </PaginationItem>
                 ))}
               </div>
-              <PaginationItem className="border-1 rounded-xl border-gray-500 text-gray-8">
+              <PaginationItem className="border rounded-xl border-gray-500 text-gray-8">
                 <PaginationNext href="#" size="default" onClick={handleNext} />
               </PaginationItem>
             </PaginationContent>

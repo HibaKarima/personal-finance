@@ -9,7 +9,7 @@ function Hero() {
         <ContainerScroll
           titleComponent={
             <>
-              <h1 className="text-4xl font-semibold text-black dark:text-white">
+              <h1 className="text-4xl font-semibold text-black">
                 Manage Your Money With Our App <br />
                 <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
                   Personal Finance
@@ -23,7 +23,7 @@ function Hero() {
             alt="hero"
             height={720}
             width={1400}
-            className="mx-auto rounded-2xl object-cover h-full object-left-top"
+            className="mx-auto rounded-2xl object-cover h-full object-top-left"
             draggable={false}
           />
         </ContainerScroll>

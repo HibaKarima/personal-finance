@@ -80,7 +80,7 @@ function RecurringBills() {
                   key={index1}
                   className={`flex ${
                     item1.text == "Due Soon" ? "text-red-500" : "text-gray-500"
-                  } items-center justify-between py-3 border-b-1 border-b-gray-200`}
+                  } items-center justify-between py-3 border-b border-b-gray-200`}
                 >
                   <p>{item1.text}</p>
                   <p className="font-bold">
@@ -155,19 +155,19 @@ function RecurringBills() {
               </DropdownMenu>
             </div>
           </div>
-          <div className="w-full  text-sm mt-5 flex flex-col flex-1 items-center px-2">
+          <div className="w-full  text-sm mt-5 flex flex-col px-2">
             <div className="w-full">
-              <div className="text-gray-500 border-b text-left border-gray-500 flex items-center flex-1 justify-between w-full  px-3">
+              <div className="text-gray-500 border-b border-gray-500 grid-cols-[2fr_2fr_1fr] grid items-center  w-full  py-3">
                 <div className="pb-5">Bill Title</div>
-                <div className="pb-5">Due Date</div>
-                <div className="pb-5 text-right">Amount</div>
+                <div className="pb-5  text-center">Due Date</div>
+                <div className="pb-5  text-center">Amount</div>
               </div>
             </div>
-            <div className="w-full flex flex-col gap-5 items-center">
+            <div className="w-full">
               {sorted.map((item: billsNametItem, index: number) => (
                 <div
                   key={index}
-                  className="border-b border-gray-500 hover:bg-gray-50 flex items-center flex-1 justify-between w-full p-3 text-left"
+                  className="border-b border-gray-500 text-center hover:bg-gray-50 grid-cols-[2fr_2fr_1fr] grid items-center w-full py-3 "
                 >
                   <div className="flex gap-3 items-center">
                     <Image
@@ -221,8 +221,8 @@ function RecurringBills() {
                           <Image
                             src="/images/icon-bill-paid.svg"
                             alt="paid"
-                            width={10}
-                            height={10}
+                            width={15}
+                            height={15}
                           />
                         );
                       } else if (!item.paid && diff <= 2 && diff >= 0) {
@@ -230,8 +230,8 @@ function RecurringBills() {
                           <Image
                             src="/images/icon-bill-due.svg"
                             alt="due soon"
-                            width={10}
-                            height={10}
+                            width={15}
+                            height={15}
                           />
                         );
                       } else {
@@ -240,7 +240,7 @@ function RecurringBills() {
                     })()}
                   </div>
                   <div>
-                    <h1>{item.value}</h1>
+                    <h1 className={`${item.paid ?"text-teal-700":"text-red-500"} font-semibold` }>${item.value}.00</h1>
                   </div>
                 </div>
               ))}

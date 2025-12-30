@@ -38,22 +38,46 @@ function BudgetsPage() {
         </Button>
       </div>
       <div className="flex lg:flex-row flex-col gap-2 lg:justify-between ">
-        <div className="flex flex-col items-center justify-between shadow-xl border-1 border-gray-200 p-4 rounded-2xl lg:w-[45%] w-full h-fit bg-white">
+        <div className="flex flex-col items-center justify-between shadow-xl border border-gray-200 p-4 rounded-2xl lg:w-[45%] w-full h-fit bg-white">
           <div className="relative">
-            <PieChart width={200} height={200}>
+                    <PieChart width={360} height={360}>
+              {/* Outer Ring */}
               <Pie
                 data={addnew}
                 dataKey="num"
-                innerRadius={60}
-                outerRadius={90}
+                cx="50%"
+                cy="50%"
+                innerRadius={85}
+                outerRadius={120}
                 startAngle={90}
                 endAngle={450}
               >
-                {addnew.map((item1: budgetItem, index: number) => (
-                  <Cell key={`cell-${index}`} fill={item1.color} />
+                {addnew.map((item, index) => (
+                  <Cell key={`outer-${index}`} fill={item.color} />
+                ))}
+              </Pie>
+            
+              {/* Inner Ring */}
+              <Pie
+                data={addnew}
+                dataKey="num"
+                cx="50%"
+                cy="50%"
+                innerRadius={70}
+                outerRadius={85}
+                startAngle={90}
+                endAngle={450}
+              >
+                {addnew.map((item, index) => (
+                  <Cell
+                    key={`inner-${index}`}
+                    fill={item.color}
+                    fillOpacity={0.35}
+                  />
                 ))}
               </Pie>
             </PieChart>
+            
 
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <h2 className="text-2xl font-bold text-gray-900">${total}</h2>
@@ -66,7 +90,7 @@ function BudgetsPage() {
               return (
                 <div
                   key={index}
-                  className="flex w-full gap-3 items-center border-b-1 border-gray-100 shadow py-2 px-3 rounded-xl"
+                  className="flex w-full gap-3 items-center border-b border-gray-100 shadow py-2 px-3 rounded-xl"
                 >
                   <div
                     className={`w-1 h-10 rounded`}
@@ -100,7 +124,7 @@ function BudgetsPage() {
             return (
               <div
                 key={index}
-                className="p-5 border-1 border-gray-200 shadow-xl rounded-2xl w-full bg-white"
+                className="p-5 border border-gray-200 shadow-xl rounded-2xl w-full bg-white"
               >
                 <div className="flex items-center justify-between">
                   <div className=" flex items-center gap-3 p-2">
@@ -197,7 +221,7 @@ function BudgetsPage() {
                     .map((item1: transactionItem, index1: number) => {
                       return (
                         <div key={index1} className="">
-                          <div className="flex items-center justify-between border-b-1 border-b-gray-200 p-2">
+                          <div className="flex items-center justify-between border-b border-b-gray-200 p-2">
                             <div className="flex items-center gap-3">
                               <Image
                                 src={item1.img}
