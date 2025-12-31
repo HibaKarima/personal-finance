@@ -10,7 +10,7 @@ function OverviewHead() {
           return (
             <div
               key={index}
-              className=" p-4 bg-white hover:bg-gray-900 hover:text-white rounded-xl min-h-[100px]"
+              className=" p-4 bg-white hover:bg-gray-900 hover:text-white rounded-xl min-h-25"
             >
               <p>{item.text}</p>
               <h1 className="text-2xl pt-3">${item.num}</h1>

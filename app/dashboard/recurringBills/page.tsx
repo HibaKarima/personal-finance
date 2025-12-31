@@ -58,7 +58,7 @@ function RecurringBills() {
     <div className="p-7 w-full min-h-screen pb-30 lg:pb-7">
       <h1 className="text-2xl font-bold py-4">Recurring Bills</h1>
       <div className="flex justify-between flex-col lg:flex-row items-center w-full">
-        <div className="flex flex-col  gap-5 lg:w-[25%] w-full">
+        <div className="flex flex-col gap-5 lg:w-[25%] w-full">
           <div className="bg-black rounded-xl lg:w-full p-5 text-white">
             <Image
               src="/images/icon-recurring-bills.svg"

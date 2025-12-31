@@ -37,7 +37,7 @@ function BudgetsPage() {
           + Add New Budget
         </Button>
       </div>
-      <div className="flex w-full ml-5 lg:ml-auto flex-col lg:flex-row gap-4">
+      <div className="flex w-full lg:ml-auto flex-col lg:flex-row gap-4">
         <div className="flex flex-col items-center justify-between shadow-xl border border-gray-200 p-4 rounded-2xl w-full lg:w-5/12 h-fit bg-white">
           <div className="relative w-full h-70 sm:h-80 ">
                     <PieChart width="100%" height="100%">
