@@ -55,10 +55,10 @@ function RecurringBills() {
   const total = billsNameData.reduce((sum, item) => sum + item.value, 0);
 
   return (
-    <div className="p-7 w-full min-h-screen">
+    <div className="p-7 w-full min-h-screen pb-30 lg:pb-7">
       <h1 className="text-2xl font-bold py-4">Recurring Bills</h1>
-      <div className="flex justify-between items-center w-full">
-        <div className="flex lg:flex-col flex-row gap-5 lg:w-[25%] w-full">
+      <div className="flex justify-between flex-col lg:flex-row items-center w-full">
+        <div className="flex flex-col  gap-5 lg:w-[25%] w-full">
           <div className="bg-black rounded-xl lg:w-full p-5 text-white">
             <Image
               src="/images/icon-recurring-bills.svg"
@@ -157,17 +157,17 @@ function RecurringBills() {
           </div>
           <div className="w-full  text-sm mt-5 flex flex-col px-2">
             <div className="w-full">
-              <div className="text-gray-500 border-b border-gray-500 grid-cols-[2fr_2fr_1fr] grid items-center  w-full  py-3">
+              <div className="text-gray-500 border-b border-gray-500 lg:grid-cols-[2fr_2fr_1fr] grid-cols-[1fr_1fr] grid items-center  w-full  py-3">
                 <div className="pb-5">Bill Title</div>
-                <div className="pb-5  text-center">Due Date</div>
-                <div className="pb-5  text-center">Amount</div>
+                <div className="pb-5  text-center hidden lg:block">Due Date</div>
+                <div className="pb-5  lg:text-center text-right">Amount</div>
               </div>
             </div>
             <div className="w-full">
               {sorted.map((item: billsNametItem, index: number) => (
                 <div
                   key={index}
-                  className="border-b border-gray-500 text-center hover:bg-gray-50 grid-cols-[2fr_2fr_1fr] grid items-center w-full py-3 "
+                  className="border-b border-gray-500 lg:text-center hover:bg-gray-50 lg:grid-cols-[2fr_2fr_1fr] grid-cols-[1fr_1fr] grid items-center w-full py-3 "
                 >
                   <div className="flex gap-3 items-center">
                     <Image
@@ -175,7 +175,7 @@ function RecurringBills() {
                       alt="profile"
                       width={23}
                       height={23}
-                      className=" rounded-full object-cover"
+                      className=" rounded-full object-cover hidden lg:block"
                     />
                     <div className="flex flex-col gap-1">
                       <p className="font-medium">{item.text}</p>
@@ -240,7 +240,7 @@ function RecurringBills() {
                     })()}
                   </div>
                   <div>
-                    <h1 className={`${item.paid ?"text-teal-700":"text-red-500"} font-semibold` }>${item.value}.00</h1>
+                    <h1 className={`${item.paid ?"text-teal-700":"text-red-500"} font-semibold lg:text-center text-right` }>${item.value}.00</h1>
                   </div>
                 </div>
               ))}

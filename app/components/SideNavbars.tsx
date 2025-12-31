@@ -10,7 +10,7 @@ interface SidebarProps {
 function SideNavbars({ isOpen, closeSidebar }: SidebarProps) {
   const pathname = usePathname();
   return (
-    <div className={`${isOpen ? "flex" : "hidden"} lg:w-[20%] rounded-t-xl lg:rounded-t-none lg:rounded-r-xl w-full  min-h-screen h-full  flex-row lg:flex-col bg-gray-950 shadow text-gray-100 lg:py-6 lg:pr-6 lg:pl-0 p-5  fixed bottom-0 right-3 left-0 lg:right-auto z-50`}>
+    <div className={`${isOpen ? "flex" : "hidden"} lg:w-[20%] rounded-t-xl lg:rounded-t-none lg:rounded-r-xl w-full h-auto lg:min-h-screen lg:h-full  flex-row lg:flex-col bg-gray-950 shadow text-gray-100 lg:py-6 lg:pr-6 lg:pl-0 p-5  fixed bottom-0 right-3 left-0 lg:right-auto z-50`}>
       <h2 className="text-2xl font-extrabold mb-10 ml-12 tracking-tight hidden lg:block">
         finance
       </h2>

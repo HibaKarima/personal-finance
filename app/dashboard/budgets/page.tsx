@@ -26,21 +26,21 @@ function BudgetsPage() {
   const [deleteModel, setDeleteModel] = useState(false);
   const [currentBudget, setCurrentBudget] = useState<budgetItem | null>(null);
   return (
-    <div className="w-full p-8 lg:pb-8 pb-30 h-auto bg-[#f8f4f0]">
-      <div className="flex justify-between items-center py-4">
-        <h2 className="text-2xl font-bold">Budgets</h2>
+    <div className="lg:w-full w-screen pb-30 lg:p-4 bg-[#f8f4f0]">
+      <div className="">
+        <h2 className="text-2xl font-bold m-5">Budgets</h2>
         <Button
           variant="link"
-          className="text-white bg-gray-900 cursor-pointer"
+          className="text-white bg-gray-900 cursor-pointer m-5 lg:w-auto w-full "
           onClick={() => setShowAddModal(true)}
         >
           + Add New Budget
         </Button>
       </div>
-      <div className="flex lg:flex-row flex-col gap-2 lg:justify-between ">
-        <div className="flex flex-col items-center justify-between shadow-xl border border-gray-200 p-4 rounded-2xl lg:w-[45%] w-full h-fit bg-white">
-          <div className="relative">
-                    <PieChart width={360} height={360}>
+      <div className="flex w-full ml-5 lg:ml-auto flex-col lg:flex-row gap-4">
+        <div className="flex flex-col items-center justify-between shadow-xl border border-gray-200 p-4 rounded-2xl w-full lg:w-5/12 h-fit bg-white">
+          <div className="relative w-full h-70 sm:h-80 ">
+                    <PieChart width="100%" height="100%">
               {/* Outer Ring */}
               <Pie
                 data={addnew}
@@ -90,7 +90,7 @@ function BudgetsPage() {
               return (
                 <div
                   key={index}
-                  className="flex w-full gap-3 items-center border-b border-gray-100 shadow py-2 px-3 rounded-xl"
+                  className="flex w-full gap-3 items-center border-b border-gray-100 shadow-sm py-2 px-3 sm:px-4 rounded-xl"
                 >
                   <div
                     className={`w-1 h-10 rounded`}
@@ -113,7 +113,7 @@ function BudgetsPage() {
             })}
           </div>
         </div>
-        <div className="flex flex-col items-center gap-2 lg:w-[50%] w-full justify-center">
+        <div className="flex flex-col items-center gap-2 w-full lg:w-7/12 justify-center">
           {addnew.map((item: budgetItem, index: number) => {
             const relatedTransactions = transactionData
               .filter((t: transactionItem) => t.category === item.text)
@@ -199,7 +199,7 @@ function BudgetsPage() {
                   </div>
                 </div>
                 <div className="bg-[#f8f4f0] p-5 rounded-2xl">
-                  <div className="flex justify-between items-center mb-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <h1 className="text-xl font-semibold text-gray-900">
                       Latest Spending
                     </h1>
